@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { createClient } from "@/src/lib/supabase/client";
 import { Card } from "@/components/ui";
 import { PrimaryButton } from "@/components/ui";
@@ -17,32 +17,22 @@ function formatTimeForInput(timeStr: string | null): string {
   return "14:00";
 }
 
-export function HappyHourSettings() {
-  const [startTime, setStartTime] = useState("14:00");
-  const [endTime, setEndTime] = useState("16:00");
-  const [enabled, setEnabled] = useState(true);
-  const [loading, setLoading] = useState(true);
+interface HappyHourSettingsProps {
+  initialStartTime: string | null;
+  initialEndTime: string | null;
+  initialEnabled: boolean;
+}
+
+export function HappyHourSettings({
+  initialStartTime,
+  initialEndTime,
+  initialEnabled,
+}: HappyHourSettingsProps) {
+  const [startTime, setStartTime] = useState(formatTimeForInput(initialStartTime));
+  const [endTime, setEndTime] = useState(formatTimeForInput(initialEndTime));
+  const [enabled, setEnabled] = useState(initialEnabled);
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
-
-  useEffect(() => {
-    async function fetchConfig() {
-      const supabase = createClient();
-      const { data } = await supabase
-        .from("happy_hour_config")
-        .select("start_time, end_time, enabled")
-        .eq("id", 1)
-        .maybeSingle();
-
-      if (data) {
-        setStartTime(formatTimeForInput(data.start_time));
-        setEndTime(formatTimeForInput(data.end_time));
-        setEnabled(data.enabled ?? true);
-      }
-      setLoading(false);
-    }
-    fetchConfig();
-  }, []);
 
   async function handleSave() {
     setSaving(true);
@@ -73,14 +63,6 @@ export function HappyHourSettings() {
     } finally {
       setSaving(false);
     }
-  }
-
-  if (loading) {
-    return (
-      <Card>
-        <p className="py-4 text-center text-sm text-zinc-500">로딩 중...</p>
-      </Card>
-    );
   }
 
   return (

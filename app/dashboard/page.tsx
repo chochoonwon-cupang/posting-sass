@@ -1,9 +1,15 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/src/lib/supabase/server";
-
-export const revalidate = 5;
 import { MobileShell } from "@/components/layout/MobileShell";
 import { DashboardClient } from "./DashboardClient";
+
+export const revalidate = 60;
+
+function formatTime(t: string | null) {
+  if (!t) return "";
+  const m = String(t).match(/(\d{1,2}):(\d{2})/);
+  return m ? `${m[1].padStart(2, "0")}:${m[2]}` : String(t);
+}
 
 export default async function DashboardPage() {
   const supabase = await createClient();
@@ -15,75 +21,66 @@ export default async function DashboardPage() {
     redirect("/login");
   }
 
-  let { data: userProfile } = await supabase
-    .from("users")
-    .select("balance")
-    .eq("id", user.id)
-    .maybeSingle();
-
-  if (!userProfile) {
-    const { error } = await supabase.from("users").upsert(
-      { id: user.id, balance: 0 },
-      { onConflict: "id", ignoreDuplicates: true }
-    );
-    if (!error) {
-      userProfile = { balance: 0 };
-    } else {
-      const { data } = await supabase
-        .from("users")
-        .select("balance")
-        .eq("id", user.id)
-        .maybeSingle();
-      userProfile = data ?? { balance: 0 };
-    }
-  }
-
-  const balance = userProfile?.balance ?? 0;
-
   const todayStart = new Date();
   todayStart.setHours(0, 0, 0, 0);
   const todayEnd = new Date(todayStart);
   todayEnd.setDate(todayEnd.getDate() + 1);
 
-  const { count: pendingCount } = await supabase
-    .from("bids")
-    .select("*", { count: "exact", head: true })
-    .eq("user_id", user.id)
-    .eq("status", "pending");
+  const [
+    userProfileRes,
+    pendingRes,
+    processingRes,
+    doneRes,
+    happyHourRes,
+  ] = await Promise.all([
+    supabase.from("users").select("balance").eq("id", user.id).maybeSingle(),
+    supabase
+      .from("bids")
+      .select("*", { count: "exact", head: true })
+      .eq("user_id", user.id)
+      .eq("status", "pending"),
+    supabase
+      .from("bids")
+      .select("*", { count: "exact", head: true })
+      .eq("user_id", user.id)
+      .eq("status", "in_progress"),
+    supabase
+      .from("bids")
+      .select("*", { count: "exact", head: true })
+      .eq("user_id", user.id)
+      .eq("status", "done")
+      .gte("created_at", todayStart.toISOString())
+      .lt("created_at", todayEnd.toISOString()),
+    supabase
+      .from("happy_hour_config")
+      .select("start_time, end_time, enabled")
+      .eq("id", 1)
+      .maybeSingle(),
+  ]);
 
-  const { count: processingCount } = await supabase
-    .from("bids")
-    .select("*", { count: "exact", head: true })
-    .eq("user_id", user.id)
-    .eq("status", "in_progress");
+  let balance: number;
+  if (userProfileRes.data != null) {
+    balance = userProfileRes.data.balance ?? 0;
+  } else {
+    const { error } = await supabase.from("users").upsert(
+      { id: user.id, balance: 0 },
+      { onConflict: "id", ignoreDuplicates: true }
+    );
+    balance = error
+      ? (await supabase.from("users").select("balance").eq("id", user.id).maybeSingle()).data
+          ?.balance ?? 0
+      : 0;
+  }
 
-  const { count: doneCount } = await supabase
-    .from("bids")
-    .select("*", { count: "exact", head: true })
-    .eq("user_id", user.id)
-    .eq("status", "done")
-    .gte("created_at", todayStart.toISOString())
-    .lt("created_at", todayEnd.toISOString());
-
-  const { data: happyHour } = await supabase
-    .from("happy_hour_config")
-    .select("start_time, end_time, enabled")
-    .eq("id", 1)
-    .maybeSingle();
-
-  const formatTime = (t: string | null) => {
-    if (!t) return "";
-    const m = String(t).match(/(\d{1,2}):(\d{2})/);
-    return m ? `${m[1].padStart(2, "0")}:${m[2]}` : String(t);
-  };
+  const happyHour = happyHourRes.data;
 
   return (
     <MobileShell title="대시보드">
       <DashboardClient
-        balance={balance}
-        pendingCount={pendingCount ?? 0}
-        processingCount={processingCount ?? 0}
-        doneCount={doneCount ?? 0}
+        balance={balance ?? 0}
+        pendingCount={pendingRes.count ?? 0}
+        processingCount={processingRes.count ?? 0}
+        doneCount={doneRes.count ?? 0}
         happyHourStart={formatTime(happyHour?.start_time ?? null)}
         happyHourEnd={formatTime(happyHour?.end_time ?? null)}
         happyHourEnabled={happyHour?.enabled ?? true}

@@ -1,7 +1,12 @@
+"use client";
+
 import dynamic from "next/dynamic";
 import { ReactNode } from "react";
 
-const BottomNav = dynamic(() => import("./BottomNav").then((m) => ({ default: m.BottomNav })));
+const BottomNav = dynamic(
+  () => import("./BottomNav").then((m) => ({ default: m.BottomNav })),
+  { ssr: false }
+);
 
 interface MobileShellProps {
   title: string;
