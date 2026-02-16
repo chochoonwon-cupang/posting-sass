@@ -12,5 +12,6 @@ export const config = {
     "/charge/:path*",
     "/my/:path*",
     "/settings/:path*",
+    "/new/:path*",
   ],
 };

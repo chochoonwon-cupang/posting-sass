@@ -1,7 +1,8 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/src/lib/supabase/server";
+
+export const revalidate = 5;
 import { MobileShell } from "@/components/layout/MobileShell";
-import { Card } from "@/components/ui";
 import { DashboardClient } from "./DashboardClient";
 
 export default async function DashboardPage() {
