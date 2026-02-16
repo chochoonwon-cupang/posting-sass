@@ -1,0 +1,33 @@
+---
+description: Supabase RPC 호출 시 named parameter 필수
+globs: "**/*.{ts,tsx,js,jsx,py}"
+alwaysApply: false
+---
+
+# Supabase RPC 호출 규칙
+
+## 반드시 named parameter 방식 사용
+
+RPC 호출 시 **객체 형태로 파라미터명을 명시**해야 한다. positional/배열 방식은 함수 시그니처를 못 찾는 에러를 유발할 수 있다.
+
+```javascript
+// ✅ GOOD - named params
+await supabase.rpc('sub_cart_add', {
+  p_subscription_id: subscriptionId,
+  p_sku: sku,
+  p_delta: delta
+});
+
+// ❌ BAD - positional/array
+await supabase.rpc('sub_cart_add', [subscriptionId, sku, delta]);
+```
+
+### Python
+```python
+# ✅ GOOD
+supabase.rpc("sub_cart_add", {
+  "p_subscription_id": subscription_id,
+  "p_sku": sku,
+  "p_delta": delta
+}).execute()
+```

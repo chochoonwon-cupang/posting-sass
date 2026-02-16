@@ -1,0 +1,33 @@
+---
+description: SQL 마이그레이션 규칙 - 함수 시그니처 변경 시 DROP 후 CREATE
+globs: **/*.sql
+alwaysApply: false
+---
+
+# SQL 함수 마이그레이션
+
+## 함수 파라미터/시그니처 변경 시
+
+PostgreSQL에서 `CREATE OR REPLACE`는 **함수 시그니처(파라미터 타입·개수·순서)가 바뀌면 실패**한다.
+
+이 경우 **DROP 후 CREATE**로 마이그레이션 처리:
+
+```sql
+-- 1) 기존 함수 삭제 (시그니처 명시)
+DROP FUNCTION IF EXISTS public.apply_subscription_payment(TEXT, TEXT, UUID, INT);
+
+-- 2) 새 시그니처로 생성
+CREATE OR REPLACE FUNCTION public.apply_subscription_payment(
+  p_provider TEXT,
+  p_provider_event_id TEXT,
+  p_user_id UUID,  -- 파라미터 변경 예시
+  p_amount INT
+)
+RETURNS jsonb
+...
+```
+
+### 참고
+
+- `DROP FUNCTION IF EXISTS` 사용 시 기존 함수가 없어도 에러 없음
+- 시그니처는 `함수명(파라미터타입1, 파라미터타입2, ...)` 형식으로 정확히 명시
