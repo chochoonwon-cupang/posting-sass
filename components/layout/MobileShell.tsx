@@ -37,7 +37,7 @@ export function MobileShell({
       </header>
 
       <main
-        className={`mx-auto w-full flex-1 px-4 pb-24 pt-4 ${wide ? "max-w-4xl" : "max-w-md"}`}
+        className={`mx-auto w-full flex-1 px-4 pb-32 pt-4 ${wide ? "max-w-4xl" : "max-w-md"}`}
       >
         {children}
       </main>
