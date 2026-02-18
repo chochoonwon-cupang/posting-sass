@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
-import { FloatingBanner } from "@/components/layout/FloatingBanner";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -41,7 +40,6 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
         {children}
-        <FloatingBanner />
       </body>
     </html>
   );

@@ -34,7 +34,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="mx-auto max-w-md px-4 py-20 pb-28">
+    <div className="mx-auto max-w-md px-4 py-20">
       <div className="rounded-2xl border border-white/10 bg-white p-6 shadow-lg">
         <h1 className="mb-6 text-2xl font-bold text-zinc-900">로그인</h1>
 
