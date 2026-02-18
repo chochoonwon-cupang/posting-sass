@@ -66,6 +66,14 @@ export default function LoginPage() {
           >
             {loading ? "로그인 중..." : "로그인"}
           </button>
+
+          <button
+            type="button"
+            onClick={() => router.push("/signup")}
+            className="rounded-xl bg-indigo-500 py-3 font-semibold text-white transition-colors hover:bg-indigo-600"
+          >
+            회원가입
+          </button>
         </form>
       </div>
     </div>
