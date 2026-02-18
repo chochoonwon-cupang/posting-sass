@@ -26,10 +26,10 @@ const pains = [
 export function PainSection() {
   return (
     <section className="py-12 md:py-16">
-      <h2 className="text-center text-2xl font-bold text-zinc-900 md:text-3xl">
+      <h2 className="text-center text-2xl font-bold text-white md:text-3xl">
         포스팅 도우미 핵심 기능
       </h2>
-      <p className="mx-auto mt-2 max-w-xl text-center text-sm text-zinc-600">
+      <p className="mx-auto mt-2 max-w-xl text-center text-sm text-zinc-400">
         입찰형 포스팅으로 한 번에 해결
       </p>
 
@@ -37,7 +37,7 @@ export function PainSection() {
         {pains.map((item) => (
           <div
             key={item.title}
-            className="rounded-2xl border border-black/5 bg-white p-5 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
+            className="rounded-2xl border border-white/10 bg-white p-5 shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl"
           >
             <span className="text-2xl">{item.icon}</span>
             <h3 className="mt-2 font-semibold text-zinc-900">{item.title}</h3>

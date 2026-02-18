@@ -3,10 +3,11 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  /* coupang-bot 스타일: 옅은 블루그레이 (coupang-bot.vercel.app 동일) */
-  --app-bg: #F5F6F8;
-  --card: #FFFFFF;
-  --border: rgba(0, 0, 0, 0.06);
+  /* coupang-bot / posting-webna: 다크 블루-퍼플 배경 */
+  --app-bg: #1e1b4b;
+  --app-bg-alt: #312e81;
+  --card: #ffffff;
+  --border: rgba(255, 255, 255, 0.1);
 }
 
 @theme inline {

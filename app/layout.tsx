@@ -33,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-[#F5F6F8] antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-[#1e1b4b] text-white antialiased`}
       >
         <Script
           src="https://cdn.portone.io/v2/browser-sdk.js"

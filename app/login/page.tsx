@@ -34,46 +34,48 @@ export default function LoginPage() {
   };
 
   return (
-    <div style={{ maxWidth: 420, margin: "80px auto" }}>
-      <h1 style={{ fontSize: 24, fontWeight: 700, marginBottom: 16 }}>로그인</h1>
+    <div className="mx-auto max-w-md px-4 py-20">
+      <div className="rounded-2xl border border-white/10 bg-white p-6 shadow-lg">
+        <h1 className="mb-6 text-2xl font-bold text-zinc-900">로그인</h1>
 
-      <form onSubmit={onSubmit} style={{ display: "grid", gap: 12 }}>
-        <input
-          placeholder="이메일"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          type="email"
-          required
-          style={{ padding: 12, border: "1px solid #ddd", borderRadius: 8 }}
-        />
+        <form onSubmit={onSubmit} className="flex flex-col gap-3">
+          <input
+            placeholder="이메일"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            type="email"
+            required
+            className="rounded-xl border border-zinc-300 bg-white px-4 py-3 text-zinc-900 placeholder-zinc-400 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+          />
 
-        <input
-          placeholder="비밀번호"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          type="password"
-          required
-          style={{ padding: 12, border: "1px solid #ddd", borderRadius: 8 }}
-        />
+          <input
+            placeholder="비밀번호"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            type="password"
+            required
+            className="rounded-xl border border-zinc-300 bg-white px-4 py-3 text-zinc-900 placeholder-zinc-400 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+          />
 
-        {error && <div style={{ color: "crimson" }}>{error}</div>}
+          {error && <div className="text-sm text-red-400">{error}</div>}
 
-        <button
-          disabled={loading}
-          type="submit"
-          style={{ padding: 12, borderRadius: 8, fontWeight: 700 }}
-        >
-          {loading ? "로그인 중..." : "로그인"}
-        </button>
+          <button
+            disabled={loading}
+            type="submit"
+            className="rounded-xl bg-indigo-500 py-3 font-semibold text-white transition-colors hover:bg-indigo-600 disabled:opacity-50"
+          >
+            {loading ? "로그인 중..." : "로그인"}
+          </button>
 
-        <button
-          type="button"
-          onClick={() => router.push("/signup")}
-          style={{ padding: 12, borderRadius: 8 }}
-        >
-          회원가입
-        </button>
-      </form>
+          <button
+            type="button"
+            onClick={() => router.push("/signup")}
+            className="rounded-xl border border-white/30 bg-white/5 py-3 font-medium text-white transition-colors hover:bg-white/10"
+          >
+            회원가입
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
