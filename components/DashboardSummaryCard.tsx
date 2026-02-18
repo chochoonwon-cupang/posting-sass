@@ -6,7 +6,7 @@ import { createClient } from "@/src/lib/supabase/client";
 import { Card } from "@/components/ui";
 import { Toggle } from "@/components/ui/Toggle";
 
-interface DashboardClientProps {
+interface DashboardSummaryCardProps {
   balance: number;
   pendingCount: number;
   processingCount: number;
@@ -16,7 +16,7 @@ interface DashboardClientProps {
   happyHourEnabled?: boolean;
 }
 
-export function DashboardClient({
+export function DashboardSummaryCard({
   balance: initialBalance,
   pendingCount,
   processingCount,
@@ -24,7 +24,7 @@ export function DashboardClient({
   happyHourStart = "14:00",
   happyHourEnd = "16:00",
   happyHourEnabled = true,
-}: DashboardClientProps) {
+}: DashboardSummaryCardProps) {
   const router = useRouter();
   const [balance, setBalance] = useState(initialBalance);
   const [pollingEnabled, setPollingEnabled] = useState(false);

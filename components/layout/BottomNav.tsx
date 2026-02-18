@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { CreditCard } from "lucide-react";
+import { CreditCard, UserCircle } from "lucide-react";
 
 const navItems = [
   { href: "/dashboard", label: "홈", icon: "🏠" },
@@ -10,7 +10,7 @@ const navItems = [
   { href: "/my", label: "내목록", icon: "📋" },
   { href: "/subscribe", label: "정기구독", icon: "🛒", iconComponent: CreditCard },
   { href: "/charge", label: "충전", icon: "💰" },
-  { href: "/settings", label: "설정", icon: "⚙️" },
+  { href: "/settings", label: "내정보", iconComponent: UserCircle },
 ];
 
 export function BottomNav() {
