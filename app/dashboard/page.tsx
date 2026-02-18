@@ -1,4 +1,3 @@
-import { redirect } from "next/navigation";
 import { createClient } from "@/src/lib/supabase/server";
 import { MobileShell } from "@/components/layout/MobileShell";
 import DashboardHome from "@/src/components/dashboard/DashboardHome";
@@ -11,13 +10,9 @@ export default async function DashboardPage() {
     data: { user },
   } = await supabase.auth.getUser();
 
-  if (!user) {
-    redirect("/login");
-  }
-
   return (
     <MobileShell title="대시보드" wide>
-      <DashboardHome />
+      <DashboardHome isLoggedIn={!!user} />
     </MobileShell>
   );
 }
