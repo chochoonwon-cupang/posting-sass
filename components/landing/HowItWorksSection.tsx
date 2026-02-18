@@ -24,7 +24,7 @@ const steps = [
 export function HowItWorksSection() {
   return (
     <section className="py-12 md:py-16">
-      <h2 className="text-center text-xl font-bold text-zinc-900 md:text-2xl">
+      <h2 className="text-center text-2xl font-bold text-zinc-900 md:text-3xl">
         입찰형 포스팅, 이렇게 진행됩니다
       </h2>
       <p className="mx-auto mt-2 max-w-xl text-center text-sm text-zinc-600">
@@ -35,7 +35,7 @@ export function HowItWorksSection() {
         {steps.map((step) => (
           <div
             key={step.badge}
-            className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
+            className="rounded-2xl border border-black/5 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
           >
             <span className="inline-block rounded-lg bg-indigo-100 px-2 py-0.5 text-xs font-semibold text-indigo-700">
               {step.badge}

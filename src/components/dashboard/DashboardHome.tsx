@@ -10,8 +10,8 @@ import { FinalCTA } from "@/components/landing/FinalCTA";
 
 export default function DashboardHome() {
   return (
-    <div className="landing-bg min-h-[calc(100vh-64px)]">
-      <div className="py-8 md:py-12">
+    <div className="min-h-[calc(100vh-64px)]">
+      <div className="space-y-16 py-8 md:space-y-20 md:py-12">
         <HeroSection />
 
         <PainSection />

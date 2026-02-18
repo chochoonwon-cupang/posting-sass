@@ -3,7 +3,7 @@
 export function ChargingSection() {
   return (
     <section className="py-12 md:py-16">
-      <h2 className="text-center text-xl font-bold text-zinc-900 md:text-2xl">
+      <h2 className="text-center text-2xl font-bold text-zinc-900 md:text-3xl">
         충전 정책
       </h2>
       <p className="mx-auto mt-2 max-w-xl text-center text-sm text-zinc-600">
@@ -11,7 +11,7 @@ export function ChargingSection() {
       </p>
 
       <div className="mt-8 grid gap-6 md:grid-cols-2">
-        <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md">
+        <div className="rounded-2xl border border-black/5 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md">
           <h3 className="font-semibold text-zinc-900">일반충전</h3>
           <p className="mt-2 text-sm text-zinc-600">
             결제금액만큼 충전

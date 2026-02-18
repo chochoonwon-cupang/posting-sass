@@ -5,7 +5,7 @@ import Link from "next/link";
 export function FinalCTA() {
   return (
     <section className="py-12 md:py-16">
-      <h2 className="text-center text-xl font-bold text-zinc-900 md:text-2xl">
+      <h2 className="text-center text-2xl font-bold text-zinc-900 md:text-3xl">
         5분만에 입찰형 포스팅 시작하기
       </h2>
       <div className="mt-6 flex flex-wrap justify-center gap-3">

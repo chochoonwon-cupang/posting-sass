@@ -2,15 +2,15 @@
 
 export function HappyHourSection() {
   return (
-    <section className="rounded-2xl border border-violet-200 bg-violet-50/60 px-6 py-10 md:py-12">
-      <h2 className="text-center text-xl font-bold text-zinc-900 md:text-2xl">
+    <section className="rounded-2xl border border-black/5 bg-white px-6 py-10 shadow-sm md:py-12">
+      <h2 className="text-center text-2xl font-bold text-zinc-900 md:text-3xl">
         해피아워: 하위 입찰에도 기회
       </h2>
       <p className="mx-auto mt-2 max-w-xl text-center text-sm text-zinc-600">
-        하루 2시간 랜덤 해피아워
+        <span className="inline-flex items-center rounded-lg bg-amber-100 px-2 py-0.5 font-semibold text-amber-800">하루 2시간</span> 랜덤 해피아워
       </p>
 
-      <div className="mx-auto mt-6 max-w-2xl rounded-2xl border border-violet-200 bg-white p-6 shadow-sm">
+      <div className="mx-auto mt-6 max-w-2xl rounded-2xl border border-black/5 bg-white p-6 shadow-sm">
         <p className="text-center text-sm leading-6 text-zinc-700">
           해피아워 시작 시점까지 미진행된 하위 입찰 포스팅이 랜덤으로 작성 기회를 얻습니다.
         </p>
