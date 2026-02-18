@@ -7,9 +7,11 @@ export function HeroSection() {
     <section className="relative overflow-hidden rounded-2xl border border-black/5 bg-white p-8 shadow-sm md:p-12">
       <div className="relative z-10">
         <h1 className="text-3xl font-bold tracking-tight text-zinc-900 md:text-4xl lg:text-5xl">
-          포스팅, 직접 하지 마세요.
+          네이버 블로그·카페·티스토리
+          <br />
+          <span className="text-indigo-600">입찰형 포스팅</span>으로 한 번에 해결하세요
         </h1>
-        <p className="mt-3 text-lg font-medium text-indigo-700 md:text-xl">
+        <p className="mt-3 text-lg font-medium text-zinc-700 md:text-xl">
           입찰가에 따라 우선순위 포스팅이 자동 진행됩니다.
         </p>
         <p className="mt-2 text-sm text-zinc-600">

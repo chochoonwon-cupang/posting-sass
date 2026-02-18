@@ -2,24 +2,24 @@
 
 const pains = [
   {
-    icon: "✍️",
-    title: "매번 올릴 글이 고민",
-    desc: "콘텐츠 기획부터 작성까지, 매번 새로 고민하시나요?",
+    icon: "🤖",
+    title: "입찰형 자동 발행",
+    desc: "키워드 입력 후 입찰가에 따라 우선순위가 결정되고, 자동으로 포스팅이 진행됩니다.",
   },
   {
-    icon: "⏱️",
-    title: "대량 포스팅은 시간이 너무 듦",
-    desc: "여러 채널에 반복 업로드하는 데 시간이 쏟아집니다.",
+    icon: "🔄",
+    title: "상위 입찰 우선 처리",
+    desc: "높은 입찰가가 먼저 처리되어, 원하는 순서로 포스팅을 제어할 수 있습니다.",
   },
   {
-    icon: "📊",
-    title: "우선순위 조절이 안됨",
-    desc: "어떤 글이 먼저 올라가야 할지 제어가 어렵습니다.",
+    icon: "📅",
+    title: "해피아워 랜덤 기회",
+    desc: "하루 2시간 랜덤 해피아워에 하위 입찰도 랜덤으로 포스팅 기회를 얻습니다.",
   },
   {
-    icon: "🎯",
-    title: "저가 입찰은 기회가 없음",
-    desc: "낮은 입찰가는 대기만 하다 끝나는 경우가 많았죠.",
+    icon: "🚀",
+    title: "멀티 플랫폼 발행",
+    desc: "블로그·카페·티스토리로 뷰탭 기준 자동 분배되어 노출을 극대화합니다.",
   },
 ];
 
@@ -27,10 +27,10 @@ export function PainSection() {
   return (
     <section className="py-12 md:py-16">
       <h2 className="text-center text-2xl font-bold text-zinc-900 md:text-3xl">
-        마케팅이 본업보다 힘들지 않나요?
+        포스팅 도우미 핵심 기능
       </h2>
       <p className="mx-auto mt-2 max-w-xl text-center text-sm text-zinc-600">
-        포스팅도우미가 해결해 드립니다.
+        입찰형 포스팅으로 한 번에 해결
       </p>
 
       <div className="mt-8 grid gap-4 sm:grid-cols-2">

@@ -22,8 +22,8 @@ export function MobileShell({
   wide = false,
 }: MobileShellProps) {
   return (
-    <div className="flex min-h-screen flex-col bg-transparent">
-      <header className="sticky top-0 z-40 border-b border-zinc-200 bg-white px-4 py-4">
+    <div className="flex min-h-screen flex-col bg-[#F5F6F8]">
+      <header className="sticky top-0 z-40 border-b border-black/5 bg-white px-4 py-4 shadow-sm">
         <h1 className="text-center text-lg font-bold text-zinc-900">{title}</h1>
       </header>
 

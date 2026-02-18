@@ -3,8 +3,8 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  /* coupang-bot 스타일: 아주 옅은 블루그레이/오프화이트 */
-  --app-bg: #F6F7FB;
+  /* coupang-bot 스타일: 옅은 블루그레이 (coupang-bot.vercel.app 동일) */
+  --app-bg: #F5F6F8;
   --card: #FFFFFF;
   --border: rgba(0, 0, 0, 0.06);
 }
