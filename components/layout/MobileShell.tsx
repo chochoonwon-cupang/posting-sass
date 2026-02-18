@@ -12,12 +12,14 @@ interface MobileShellProps {
   title: string;
   children: ReactNode;
   showNav?: boolean;
+  wide?: boolean;
 }
 
 export function MobileShell({
   title,
   children,
   showNav = true,
+  wide = false,
 }: MobileShellProps) {
   return (
     <div className="flex min-h-screen flex-col bg-zinc-50">
@@ -25,7 +27,9 @@ export function MobileShell({
         <h1 className="text-center text-lg font-bold text-zinc-900">{title}</h1>
       </header>
 
-      <main className="mx-auto w-full max-w-md flex-1 px-4 pb-24 pt-4">
+      <main
+        className={`mx-auto w-full flex-1 px-4 pb-24 pt-4 ${wide ? "max-w-4xl" : "max-w-md"}`}
+      >
         {children}
       </main>
 

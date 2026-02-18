@@ -16,7 +16,7 @@ export default async function DashboardPage() {
   }
 
   return (
-    <MobileShell title="대시보드">
+    <MobileShell title="대시보드" wide>
       <DashboardHome />
     </MobileShell>
   );

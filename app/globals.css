@@ -32,3 +32,8 @@ body {
     padding-bottom: calc(env(safe-area-inset-bottom) + 4rem);
   }
 }
+
+/* Landing (Mirra-style) */
+.landing-bg {
+  background: linear-gradient(to bottom, #ffffff, rgba(245, 243, 255, 0.4), #ffffff);
+}
