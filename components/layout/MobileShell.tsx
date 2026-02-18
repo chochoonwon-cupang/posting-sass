@@ -13,6 +13,7 @@ interface MobileShellProps {
   children: ReactNode;
   showNav?: boolean;
   wide?: boolean;
+  headerRight?: ReactNode;
 }
 
 export function MobileShell({
@@ -20,11 +21,13 @@ export function MobileShell({
   children,
   showNav = true,
   wide = false,
+  headerRight,
 }: MobileShellProps) {
   return (
     <div className="flex min-h-screen flex-col bg-[#1e1b4b]">
-      <header className="sticky top-0 z-40 border-b border-white/10 bg-[#1e1b4b]/95 px-4 py-4 backdrop-blur-sm">
-        <h1 className="text-center text-lg font-bold text-white">{title}</h1>
+      <header className="sticky top-0 z-40 flex items-center justify-between gap-4 border-b border-white/10 bg-[#1e1b4b]/95 px-4 py-4 backdrop-blur-sm">
+        <h1 className="text-left text-base font-bold text-white md:text-lg">{title}</h1>
+        {headerRight && <div className="flex shrink-0 items-center gap-2">{headerRight}</div>}
       </header>
 
       <main
