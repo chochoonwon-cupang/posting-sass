@@ -2,6 +2,7 @@
 
 import { EventBanner } from "@/components/landing/EventBanner";
 import { HeroSection } from "@/components/landing/HeroSection";
+import { SeventyWonSection } from "@/components/landing/SeventyWonSection";
 import { PainSection } from "@/components/landing/PainSection";
 import { HowItWorksSection } from "@/components/landing/HowItWorksSection";
 import { HappyHourSection } from "@/components/landing/HappyHourSection";
@@ -15,7 +16,7 @@ export default function DashboardHome() {
       <div className="space-y-16 py-8 md:space-y-20 md:py-12">
         <EventBanner />
         <HeroSection />
-
+        <SeventyWonSection />
         <PainSection />
 
         <HowItWorksSection />
