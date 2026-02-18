@@ -39,7 +39,7 @@ export default async function DashboardPage() {
   );
 
   return (
-    <MobileShell title="입찰형 포스팅 광고 포스팅도우미" wide headerRight={headerRight} showLogo>
+    <MobileShell title="포스팅 도우미" wide headerRight={headerRight} showLogo>
       <DashboardHome />
     </MobileShell>
   );

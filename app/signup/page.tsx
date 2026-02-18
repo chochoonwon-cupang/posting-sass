@@ -89,14 +89,6 @@ export default function SignupPage() {
           >
             {loading ? "가입 중..." : "회원가입"}
           </button>
-
-          <button
-            type="button"
-            onClick={() => router.push("/login")}
-            className="rounded-xl border border-white/30 bg-white/5 py-3 font-medium text-white transition-colors hover:bg-white/10"
-          >
-            이미 계정이 있나요? 로그인
-          </button>
         </form>
       </div>
     </div>
