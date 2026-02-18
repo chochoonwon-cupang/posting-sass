@@ -88,18 +88,11 @@ export default function DashboardHome() {
       .then((r) => r.json())
       .then((data) => {
         if (!mounted) return;
-        if (data?.ok === true) {
-          setHappyHour(data);
-        } else {
-          setHappyHour({
-            ok: false,
-            message: data?.message ?? "오늘의 해피아워 정보가 아직 준비되지 않았습니다.",
-          });
-        }
+        setHappyHour(data);
       })
       .catch(() => {
         if (!mounted) return;
-        setHappyHour({ ok: false, message: "오늘의 해피아워 정보가 아직 준비되지 않았습니다." });
+        setHappyHour({ ok: false, message: "오늘의 해피아워 정보를 불러오지 못했어요." });
       });
     return () => {
       mounted = false;
